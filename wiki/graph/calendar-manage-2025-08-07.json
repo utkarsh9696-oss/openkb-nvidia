@@ -1,0 +1,202 @@
+{
+  "nodes": [
+    {
+      "id": "calendar_management",
+      "label": "Calendar Management",
+      "type": "process",
+      "description": "The process of managing calendar events"
+    },
+    {
+      "id": "school_calendar",
+      "label": "School Calendar",
+      "type": "entity",
+      "description": "A calendar used by a school to track events"
+    },
+    {
+      "id": "parents",
+      "label": "Parents",
+      "type": "entity",
+      "description": "Individuals with children attending the school"
+    },
+    {
+      "id": "school_app",
+      "label": "School App",
+      "type": "technology",
+      "description": "A software application used by the school"
+    },
+    {
+      "id": "website",
+      "label": "School Website",
+      "type": "technology",
+      "description": "The official website of the school"
+    },
+    {
+      "id": "dashboard",
+      "label": "Dashboard",
+      "type": "technology",
+      "description": "A centralized platform for managing school data"
+    },
+    {
+      "id": "add_edit_events",
+      "label": "Add/Edit Events",
+      "type": "process",
+      "description": "The process of adding or editing calendar events"
+    },
+    {
+      "id": "event_title",
+      "label": "Event Title",
+      "type": "concept",
+      "description": "The name or title of a calendar event"
+    },
+    {
+      "id": "event_date",
+      "label": "Event Date",
+      "type": "concept",
+      "description": "The date of a calendar event"
+    },
+    {
+      "id": "event_description",
+      "label": "Event Description",
+      "type": "concept",
+      "description": "A brief description of a calendar event"
+    },
+    {
+      "id": "category",
+      "label": "Category",
+      "type": "concept",
+      "description": "A classification or grouping of calendar events"
+    },
+    {
+      "id": "support_team",
+      "label": "Support Team",
+      "type": "entity",
+      "description": "A team responsible for providing technical support"
+    },
+    {
+      "id": "integration",
+      "label": "Integration",
+      "type": "process",
+      "description": "The process of connecting different systems or technologies"
+    },
+    {
+      "id": "calendar_integration",
+      "label": "Calendar Integration",
+      "type": "process",
+      "description": "The process of integrating the school calendar with the website"
+    },
+    {
+      "id": "user",
+      "label": "User",
+      "type": "entity",
+      "description": "An individual using the school app or website"
+    },
+    {
+      "id": "event",
+      "label": "Event",
+      "type": "entity",
+      "description": "A specific occurrence or happening on the calendar"
+    }
+  ],
+  "edges": [
+    {
+      "source": "calendar_management",
+      "target": "school_calendar",
+      "relationship": "manages"
+    },
+    {
+      "source": "parents",
+      "target": "school_calendar",
+      "relationship": "uses"
+    },
+    {
+      "source": "school_app",
+      "target": "school_calendar",
+      "relationship": "integrates"
+    },
+    {
+      "source": "website",
+      "target": "school_calendar",
+      "relationship": "displays"
+    },
+    {
+      "source": "dashboard",
+      "target": "add_edit_events",
+      "relationship": "provides access to"
+    },
+    {
+      "source": "add_edit_events",
+      "target": "event_title",
+      "relationship": "requires"
+    },
+    {
+      "source": "add_edit_events",
+      "target": "event_date",
+      "relationship": "requires"
+    },
+    {
+      "source": "add_edit_events",
+      "target": "event_description",
+      "relationship": "requires"
+    },
+    {
+      "source": "add_edit_events",
+      "target": "category",
+      "relationship": "requires"
+    },
+    {
+      "source": "event",
+      "target": "event_title",
+      "relationship": "has"
+    },
+    {
+      "source": "event",
+      "target": "event_date",
+      "relationship": "has"
+    },
+    {
+      "source": "event",
+      "target": "event_description",
+      "relationship": "has"
+    },
+    {
+      "source": "event",
+      "target": "category",
+      "relationship": "belongs to"
+    },
+    {
+      "source": "support_team",
+      "target": "integration",
+      "relationship": "assists with"
+    },
+    {
+      "source": "calendar_integration",
+      "target": "school_app",
+      "relationship": "involves"
+    },
+    {
+      "source": "calendar_integration",
+      "target": "website",
+      "relationship": "involves"
+    },
+    {
+      "source": "user",
+      "target": "dashboard",
+      "relationship": "uses"
+    },
+    {
+      "source": "user",
+      "target": "add_edit_events",
+      "relationship": "performs"
+    },
+    {
+      "source": "school_calendar",
+      "target": "event",
+      "relationship": "contains"
+    },
+    {
+      "source": "integration",
+      "target": "calendar_management",
+      "relationship": "facilitates"
+    }
+  ]
+}

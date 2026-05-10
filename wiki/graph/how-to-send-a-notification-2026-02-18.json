@@ -1,0 +1,182 @@
+{
+  "nodes": [
+    {
+      "id": "school_notifications",
+      "label": "School Notifications",
+      "type": "concept",
+      "description": "Important announcements for the school community"
+    },
+    {
+      "id": "notification_types",
+      "label": "Notification Types",
+      "type": "concept",
+      "description": "Categories of notifications such as school closures and exam information"
+    },
+    {
+      "id": "school_app",
+      "label": "School App",
+      "type": "technology",
+      "description": "Mobile application for school communication"
+    },
+    {
+      "id": "registered_users",
+      "label": "Registered Users",
+      "type": "entity",
+      "description": "Users with access to the school app"
+    },
+    {
+      "id": "public_posts",
+      "label": "Public Posts",
+      "type": "concept",
+      "description": "Notifications visible to all registered users"
+    },
+    {
+      "id": "private_messages",
+      "label": "Private Messages",
+      "type": "concept",
+      "description": "Confidential communication between individuals"
+    },
+    {
+      "id": "notification_creation",
+      "label": "Notification Creation",
+      "type": "process",
+      "description": "Steps to create and publish a notification"
+    },
+    {
+      "id": "manage_notifications",
+      "label": "Manage Notifications",
+      "type": "process",
+      "description": "Interface for creating and managing notifications"
+    },
+    {
+      "id": "push_notifications",
+      "label": "Push Notifications",
+      "type": "technology",
+      "description": "Device alerts for notifications"
+    },
+    {
+      "id": "categories",
+      "label": "Categories",
+      "type": "concept",
+      "description": "Organization of notifications into sub-categories"
+    },
+    {
+      "id": "images",
+      "label": "Images",
+      "type": "concept",
+      "description": "Visual content added to notifications"
+    },
+    {
+      "id": "videos",
+      "label": "Videos",
+      "type": "concept",
+      "description": "Video content added to notifications"
+    },
+    {
+      "id": "pdfs",
+      "label": "PDFs",
+      "type": "concept",
+      "description": "Document attachments to notifications"
+    },
+    {
+      "id": "scheduling",
+      "label": "Scheduling",
+      "type": "process",
+      "description": "Controlling when notifications appear and expire"
+    },
+    {
+      "id": "social_media_integration",
+      "label": "Social Media Integration",
+      "type": "technology",
+      "description": "Posting notifications to social media platforms"
+    },
+    {
+      "id": "sms_notifications",
+      "label": "SMS Notifications",
+      "type": "technology",
+      "description": "Sending notifications via text message"
+    }
+  ],
+  "edges": [
+    {
+      "source": "school_notifications",
+      "target": "notification_types",
+      "relationship": "has types"
+    },
+    {
+      "source": "school_app",
+      "target": "registered_users",
+      "relationship": "has users"
+    },
+    {
+      "source": "public_posts",
+      "target": "school_app",
+      "relationship": "part of"
+    },
+    {
+      "source": "private_messages",
+      "target": "school_app",
+      "relationship": "not part of"
+    },
+    {
+      "source": "notification_creation",
+      "target": "manage_notifications",
+      "relationship": "uses"
+    },
+    {
+      "source": "manage_notifications",
+      "target": "push_notifications",
+      "relationship": "sends"
+    },
+    {
+      "source": "categories",
+      "target": "notification_types",
+      "relationship": "organizes"
+    },
+    {
+      "source": "images",
+      "target": "notification_creation",
+      "relationship": "enhances"
+    },
+    {
+      "source": "videos",
+      "target": "notification_creation",
+      "relationship": "enhances"
+    },
+    {
+      "source": "pdfs",
+      "target": "notification_creation",
+      "relationship": "attaches to"
+    },
+    {
+      "source": "scheduling",
+      "target": "notification_creation",
+      "relationship": "controls"
+    },
+    {
+      "source": "social_media_integration",
+      "target": "notification_creation",
+      "relationship": "extends"
+    },
+    {
+      "source": "sms_notifications",
+      "target": "notification_creation",
+      "relationship": "alternatively sends"
+    },
+    {
+      "source": "school_notifications",
+      "target": "school_app",
+      "relationship": "published on"
+    },
+    {
+      "source": "registered_users",
+      "target": "public_posts",
+      "relationship": "sees"
+    },
+    {
+      "source": "push_notifications",
+      "target": "registered_users",
+      "relationship": "notifies"
+    }
+  ]
+}

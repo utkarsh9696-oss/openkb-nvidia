@@ -1,0 +1,213 @@
+{
+  "nodes": [
+    {
+      "id": "notification_categories",
+      "label": "Notification Categories",
+      "type": "concept",
+      "description": "A way to organize notifications for efficient display"
+    },
+    {
+      "id": "notifications_feed",
+      "label": "Notifications Feed",
+      "type": "technology",
+      "description": "A feature to display notifications"
+    },
+    {
+      "id": "meetings",
+      "label": "Meetings",
+      "type": "entity",
+      "description": "A type of notification category"
+    },
+    {
+      "id": "trips",
+      "label": "Trips",
+      "type": "entity",
+      "description": "A type of notification category"
+    },
+    {
+      "id": "procedures",
+      "label": "Procedures",
+      "type": "entity",
+      "description": "A type of notification category"
+    },
+    {
+      "id": "dashboard",
+      "label": "Dashboard",
+      "type": "technology",
+      "description": "A platform to manage notifications"
+    },
+    {
+      "id": "notification_category_field",
+      "label": "Notification Category Field",
+      "type": "technology",
+      "description": "A field to add notification category title"
+    },
+    {
+      "id": "sort_order",
+      "label": "Sort Order",
+      "type": "concept",
+      "description": "A way to arrange notification categories"
+    },
+    {
+      "id": "add_notification_category",
+      "label": "Add Notification Category",
+      "type": "process",
+      "description": "A step to create a new notification category"
+    },
+    {
+      "id": "submit",
+      "label": "Submit",
+      "type": "process",
+      "description": "A step to save a new notification category"
+    },
+    {
+      "id": "sanket_haval",
+      "label": "Sanket Haval",
+      "type": "entity",
+      "description": "The author of the document"
+    },
+    {
+      "id": "schools",
+      "label": "Schools",
+      "type": "entity",
+      "description": "Institutions that use notification categories"
+    },
+    {
+      "id": "parents",
+      "label": "Parents",
+      "type": "entity",
+      "description": "Users who benefit from notification categories"
+    },
+    {
+      "id": "guardians",
+      "label": "Guardians",
+      "type": "entity",
+      "description": "Users who benefit from notification categories"
+    },
+    {
+      "id": "students",
+      "label": "Students",
+      "type": "entity",
+      "description": "Users who are related to parents and guardians"
+    },
+    {
+      "id": "year_based_categories",
+      "label": "Year-Based Categories",
+      "type": "concept",
+      "description": "A way to categorize notifications by year"
+    },
+    {
+      "id": "notifications",
+      "label": "Notifications",
+      "type": "technology",
+      "description": "Messages displayed in the notifications feed"
+    }
+  ],
+  "edges": [
+    {
+      "source": "notification_categories",
+      "target": "notifications_feed",
+      "relationship": "part_of"
+    },
+    {
+      "source": "meetings",
+      "target": "notification_categories",
+      "relationship": "instance_of"
+    },
+    {
+      "source": "trips",
+      "target": "notification_categories",
+      "relationship": "instance_of"
+    },
+    {
+      "source": "procedures",
+      "target": "notification_categories",
+      "relationship": "instance_of"
+    },
+    {
+      "source": "dashboard",
+      "target": "notifications_feed",
+      "relationship": "contains"
+    },
+    {
+      "source": "notification_category_field",
+      "target": "add_notification_category",
+      "relationship": "used_in"
+    },
+    {
+      "source": "sort_order",
+      "target": "notification_categories",
+      "relationship": "applies_to"
+    },
+    {
+      "source": "add_notification_category",
+      "target": "submit",
+      "relationship": "leads_to"
+    },
+    {
+      "source": "submit",
+      "target": "notification_categories",
+      "relationship": "creates"
+    },
+    {
+      "source": "sanket_haval",
+      "target": "notification_categories",
+      "relationship": "authored"
+    },
+    {
+      "source": "schools",
+      "target": "notification_categories",
+      "relationship": "uses"
+    },
+    {
+      "source": "parents",
+      "target": "notification_categories",
+      "relationship": "benefits_from"
+    },
+    {
+      "source": "guardians",
+      "target": "notification_categories",
+      "relationship": "benefits_from"
+    },
+    {
+      "source": "students",
+      "target": "parents",
+      "relationship": "related_to"
+    },
+    {
+      "source": "year_based_categories",
+      "target": "notification_categories",
+      "relationship": "type_of"
+    },
+    {
+      "source": "notifications",
+      "target": "notifications_feed",
+      "relationship": "displayed_in"
+    },
+    {
+      "source": "notification_categories",
+      "target": "year_based_categories",
+      "relationship": "includes"
+    },
+    {
+      "source": "dashboard",
+      "target": "add_notification_category",
+      "relationship": "provides_access_to"
+    },
+    {
+      "source": "notification_categories",
+      "target": "sort_order",
+      "relationship": "uses"
+    },
+    {
+      "source": "submit",
+      "target": "notifications",
+      "relationship": "enables"
+    },
+    {
+      "source": "notifications",
+      "target": "notification_categories",
+      "relationship": "organized_by"
+    }
+  ]
+}

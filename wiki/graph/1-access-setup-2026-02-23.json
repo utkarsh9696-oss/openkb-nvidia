@@ -1,0 +1,164 @@
+{
+  "nodes": [
+    {
+      "id": "evening_study",
+      "label": "Evening Study",
+      "type": "concept",
+      "description": "A feature for managing study sessions"
+    },
+    {
+      "id": "year_head_dashboard",
+      "label": "Year Head Dashboard",
+      "type": "technology",
+      "description": "A dashboard for year heads to manage school activities"
+    },
+    {
+      "id": "unique_schools_system",
+      "label": "Unique Schools System",
+      "type": "technology",
+      "description": "A system for managing school operations"
+    },
+    {
+      "id": "time_slots",
+      "label": "Time Slots",
+      "type": "concept",
+      "description": "Allocated time periods for study sessions"
+    },
+    {
+      "id": "settings_icon",
+      "label": "Settings Icon",
+      "type": "entity",
+      "description": "An icon for accessing settings"
+    },
+    {
+      "id": "sam_support",
+      "label": "Sam Support",
+      "type": "entity",
+      "description": "A person providing support"
+    },
+    {
+      "id": "uniqueschoolapp_ie",
+      "label": "uniqueschoolapp.ie",
+      "type": "technology",
+      "description": "A website for accessing the Unique Schools System"
+    },
+    {
+      "id": "staffsupport_uniqueschools_ie",
+      "label": "staffsupport@uniqueschools.ie",
+      "type": "entity",
+      "description": "An email address for support"
+    },
+    {
+      "id": "evening_slot",
+      "label": "Evening Slot",
+      "type": "concept",
+      "description": "A specific time slot for evening study"
+    },
+    {
+      "id": "managing_time_slots",
+      "label": "Managing Time Slots",
+      "type": "process",
+      "description": "The process of creating and deleting time slots"
+    },
+    {
+      "id": "adding_time_slots",
+      "label": "Adding Time Slots",
+      "type": "process",
+      "description": "The process of creating new time slots"
+    },
+    {
+      "id": "deleting_time_slots",
+      "label": "Deleting Time Slots",
+      "type": "process",
+      "description": "The process of removing existing time slots"
+    },
+    {
+      "id": "zoom_training_session",
+      "label": "Zoom Training Session",
+      "type": "process",
+      "description": "A training session conducted via Zoom"
+    }
+  ],
+  "edges": [
+    {
+      "source": "evening_study",
+      "target": "year_head_dashboard",
+      "relationship": "accessible via"
+    },
+    {
+      "source": "year_head_dashboard",
+      "target": "unique_schools_system",
+      "relationship": "part of"
+    },
+    {
+      "source": "evening_study",
+      "target": "time_slots",
+      "relationship": "comprises"
+    },
+    {
+      "source": "settings_icon",
+      "target": "evening_study",
+      "relationship": "accesses"
+    },
+    {
+      "source": "sam_support",
+      "target": "evening_study",
+      "relationship": "supports"
+    },
+    {
+      "source": "uniqueschoolapp_ie",
+      "target": "year_head_dashboard",
+      "relationship": "hosts"
+    },
+    {
+      "source": "staffsupport_uniqueschools_ie",
+      "target": "evening_study",
+      "relationship": "provides support for"
+    },
+    {
+      "source": "evening_slot",
+      "target": "time_slots",
+      "relationship": "is a type of"
+    },
+    {
+      "source": "managing_time_slots",
+      "target": "evening_study",
+      "relationship": "is a part of"
+    },
+    {
+      "source": "adding_time_slots",
+      "target": "managing_time_slots",
+      "relationship": "is a subprocess of"
+    },
+    {
+      "source": "deleting_time_slots",
+      "target": "managing_time_slots",
+      "relationship": "is a subprocess of"
+    },
+    {
+      "source": "zoom_training_session",
+      "target": "evening_study",
+      "relationship": "provides training for"
+    },
+    {
+      "source": "evening_study",
+      "target": "zoom_training_session",
+      "relationship": "can be trained on"
+    },
+    {
+      "source": "unique_schools_system",
+      "target": "uniqueschoolapp_ie",
+      "relationship": "is accessed via"
+    },
+    {
+      "source": "year_head_dashboard",
+      "target": "settings_icon",
+      "relationship": "contains"
+    },
+    {
+      "source": "evening_study",
+      "target": "evening_slot",
+      "relationship": "includes"
+    }
+  ]
+}

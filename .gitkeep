@@ -1,0 +1,5 @@
+New-Item uploads\.gitkeep -Force
+New-Item wiki\summaries\.gitkeep -Force
+New-Item wiki\concepts\.gitkeep -Force
+New-Item wiki\graph\.gitkeep -Force
+New-Item wiki\explorations\.gitkeep -Force

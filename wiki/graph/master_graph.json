@@ -1,0 +1,1374 @@
+{
+  "nodes": [
+    {
+      "id": "evening_study",
+      "label": "Evening Study",
+      "type": "concept",
+      "description": "A feature for managing study sessions",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "year_head_dashboard",
+      "label": "Year Head Dashboard",
+      "type": "technology",
+      "description": "A dashboard for year heads to manage school activities",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "unique_schools_system",
+      "label": "Unique Schools System",
+      "type": "technology",
+      "description": "A system for managing school operations",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "time_slots",
+      "label": "Time Slots",
+      "type": "concept",
+      "description": "Allocated time periods for study sessions",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "settings_icon",
+      "label": "Settings Icon",
+      "type": "entity",
+      "description": "An icon for accessing settings",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "sam_support",
+      "label": "Sam Support",
+      "type": "entity",
+      "description": "A person providing support",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "uniqueschoolapp_ie",
+      "label": "uniqueschoolapp.ie",
+      "type": "technology",
+      "description": "A website for accessing the Unique Schools System",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "staffsupport_uniqueschools_ie",
+      "label": "staffsupport@uniqueschools.ie",
+      "type": "entity",
+      "description": "An email address for support",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "evening_slot",
+      "label": "Evening Slot",
+      "type": "concept",
+      "description": "A specific time slot for evening study",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "managing_time_slots",
+      "label": "Managing Time Slots",
+      "type": "process",
+      "description": "The process of creating and deleting time slots",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "adding_time_slots",
+      "label": "Adding Time Slots",
+      "type": "process",
+      "description": "The process of creating new time slots",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "deleting_time_slots",
+      "label": "Deleting Time Slots",
+      "type": "process",
+      "description": "The process of removing existing time slots",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "zoom_training_session",
+      "label": "Zoom Training Session",
+      "type": "process",
+      "description": "A training session conducted via Zoom",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "id": "uniqueschoolapp",
+      "label": "Unique School App",
+      "type": "technology",
+      "description": "A school management software",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "detention_manager",
+      "label": "Detention Manager",
+      "type": "technology",
+      "description": "A module within the Unique School App",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "staff_member",
+      "label": "Staff Member",
+      "type": "entity",
+      "description": "A person in charge of an Evening Study session",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "student",
+      "label": "Student",
+      "type": "entity",
+      "description": "A participant in an Evening Study session",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "recurring_sessions",
+      "label": "Recurring Sessions",
+      "type": "concept",
+      "description": "Repeated study sessions",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "payment_item",
+      "label": "Payment Item",
+      "type": "concept",
+      "description": "A payment related to an Evening Study session",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "group_creation",
+      "label": "Group Creation",
+      "type": "process",
+      "description": "Creating groups based on payment status",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "evening_study_setup",
+      "label": "Evening Study Setup",
+      "type": "process",
+      "description": "Setting up a new Evening Study session",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "student_addition",
+      "label": "Student Addition",
+      "type": "process",
+      "description": "Adding students to an Evening Study session",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "zoom_training",
+      "label": "Zoom Training",
+      "type": "technology",
+      "description": "A video conferencing tool for training",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "email_notification",
+      "label": "Email Notification",
+      "type": "technology",
+      "description": "An automated email notification system",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "payment_status",
+      "label": "Payment Status",
+      "type": "concept",
+      "description": "The status of a payment related to an Evening Study session",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "id": "calendar_management",
+      "label": "Calendar Management",
+      "type": "process",
+      "description": "The process of managing calendar events",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "school_calendar",
+      "label": "School Calendar",
+      "type": "entity",
+      "description": "A calendar used by a school to track events",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "parents",
+      "label": "Parents",
+      "type": "entity",
+      "description": "Individuals with children attending the school",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "school_app",
+      "label": "School App",
+      "type": "technology",
+      "description": "A software application used by the school",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "website",
+      "label": "School Website",
+      "type": "technology",
+      "description": "The official website of the school",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "dashboard",
+      "label": "Dashboard",
+      "type": "technology",
+      "description": "A centralized platform for managing school data",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "add_edit_events",
+      "label": "Add/Edit Events",
+      "type": "process",
+      "description": "The process of adding or editing calendar events",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "event_title",
+      "label": "Event Title",
+      "type": "concept",
+      "description": "The name or title of a calendar event",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "event_date",
+      "label": "Event Date",
+      "type": "concept",
+      "description": "The date of a calendar event",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "event_description",
+      "label": "Event Description",
+      "type": "concept",
+      "description": "A brief description of a calendar event",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "category",
+      "label": "Category",
+      "type": "concept",
+      "description": "A classification or grouping of calendar events",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "support_team",
+      "label": "Support Team",
+      "type": "entity",
+      "description": "A team responsible for providing technical support",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "integration",
+      "label": "Integration",
+      "type": "process",
+      "description": "The process of connecting different systems or technologies",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "calendar_integration",
+      "label": "Calendar Integration",
+      "type": "process",
+      "description": "The process of integrating the school calendar with the website",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "user",
+      "label": "User",
+      "type": "entity",
+      "description": "An individual using the school app or website",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "event",
+      "label": "Event",
+      "type": "entity",
+      "description": "A specific occurrence or happening on the calendar",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "id": "school_notifications",
+      "label": "School Notifications",
+      "type": "concept",
+      "description": "Important announcements for the school community",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "notification_types",
+      "label": "Notification Types",
+      "type": "concept",
+      "description": "Categories of notifications such as school closures and exam information",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "registered_users",
+      "label": "Registered Users",
+      "type": "entity",
+      "description": "Users with access to the school app",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "public_posts",
+      "label": "Public Posts",
+      "type": "concept",
+      "description": "Notifications visible to all registered users",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "private_messages",
+      "label": "Private Messages",
+      "type": "concept",
+      "description": "Confidential communication between individuals",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "notification_creation",
+      "label": "Notification Creation",
+      "type": "process",
+      "description": "Steps to create and publish a notification",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "manage_notifications",
+      "label": "Manage Notifications",
+      "type": "process",
+      "description": "Interface for creating and managing notifications",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "push_notifications",
+      "label": "Push Notifications",
+      "type": "technology",
+      "description": "Device alerts for notifications",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "categories",
+      "label": "Categories",
+      "type": "concept",
+      "description": "Organization of notifications into sub-categories",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "images",
+      "label": "Images",
+      "type": "concept",
+      "description": "Visual content added to notifications",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "videos",
+      "label": "Videos",
+      "type": "concept",
+      "description": "Video content added to notifications",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "pdfs",
+      "label": "PDFs",
+      "type": "concept",
+      "description": "Document attachments to notifications",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "scheduling",
+      "label": "Scheduling",
+      "type": "process",
+      "description": "Controlling when notifications appear and expire",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "social_media_integration",
+      "label": "Social Media Integration",
+      "type": "technology",
+      "description": "Posting notifications to social media platforms",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "sms_notifications",
+      "label": "SMS Notifications",
+      "type": "technology",
+      "description": "Sending notifications via text message",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "id": "notification_categories",
+      "label": "Notification Categories",
+      "type": "concept",
+      "description": "A way to organize notifications for efficient display",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "notifications_feed",
+      "label": "Notifications Feed",
+      "type": "technology",
+      "description": "A feature to display notifications",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "meetings",
+      "label": "Meetings",
+      "type": "entity",
+      "description": "A type of notification category",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "trips",
+      "label": "Trips",
+      "type": "entity",
+      "description": "A type of notification category",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "procedures",
+      "label": "Procedures",
+      "type": "entity",
+      "description": "A type of notification category",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "notification_category_field",
+      "label": "Notification Category Field",
+      "type": "technology",
+      "description": "A field for adding notification categories",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "sort_order",
+      "label": "Sort Order",
+      "type": "concept",
+      "description": "A way to order notification categories",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "add_notification_category",
+      "label": "Add Notification Category",
+      "type": "process",
+      "description": "The process of creating a new notification category",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "submit",
+      "label": "Submit",
+      "type": "process",
+      "description": "The action of saving a new notification category",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "schools",
+      "label": "Schools",
+      "type": "entity",
+      "description": "Organizations that use notification categories",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "guardians",
+      "label": "Guardians",
+      "type": "entity",
+      "description": "Individuals who receive notifications",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "students",
+      "label": "Students",
+      "type": "entity",
+      "description": "Individuals who are associated with notifications",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "year_based_categories",
+      "label": "Year-Based Categories",
+      "type": "concept",
+      "description": "A way to categorize notifications by year",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "notifications",
+      "label": "Notifications",
+      "type": "technology",
+      "description": "Messages or updates displayed to users",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "left_side_menu",
+      "label": "Left Side Menu",
+      "type": "technology",
+      "description": "A navigation menu in the dashboard",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "notification_categories_page",
+      "label": "Notification Categories Page",
+      "type": "technology",
+      "description": "A page for managing notification categories",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "id": "sanket_haval",
+      "label": "Sanket Haval",
+      "type": "entity",
+      "description": "The author of the document",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "id": "school_staff",
+      "label": "School Staff",
+      "type": "entity",
+      "description": "Employees of a school",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "main_school_app",
+      "label": "Main School App",
+      "type": "technology",
+      "description": "A mobile application for school staff and students",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "administrators_app",
+      "label": "Administrators App",
+      "type": "technology",
+      "description": "A mobile application for school administrators",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "desktop_dashboard",
+      "label": "Desktop Dashboard",
+      "type": "technology",
+      "description": "A web-based platform for school staff",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "registration_process",
+      "label": "Registration Process",
+      "type": "process",
+      "description": "The process of registering for the Unique Schools System",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "login_with_microsoft",
+      "label": "Login with Microsoft",
+      "type": "technology",
+      "description": "A feature for logging in to the Unique Schools System using Microsoft credentials",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "school_administrator",
+      "label": "School Administrator",
+      "type": "entity",
+      "description": "A person responsible for managing the Unique Schools System",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "senior_management",
+      "label": "Senior Management",
+      "type": "entity",
+      "description": "A group of people responsible for making decisions about the Unique Schools System",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "access_permissions",
+      "label": "Access Permissions",
+      "type": "concept",
+      "description": "The level of access granted to school staff",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "staff_support",
+      "label": "Staff Support",
+      "type": "entity",
+      "description": "A team responsible for providing assistance to school staff",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "unique_schools_app_website",
+      "label": "Unique Schools App Website",
+      "type": "technology",
+      "description": "The website for the Unique Schools System",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "app_store",
+      "label": "App Store",
+      "type": "technology",
+      "description": "A platform for downloading mobile applications",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "google_play_store",
+      "label": "Google Play Store",
+      "type": "technology",
+      "description": "A platform for downloading mobile applications",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "microsoft_account",
+      "label": "Microsoft Account",
+      "type": "technology",
+      "description": "A type of account used for logging in to the Unique Schools System",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "verification_code",
+      "label": "Verification Code",
+      "type": "concept",
+      "description": "A code sent to school staff to verify their registration",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "school_email_address",
+      "label": "School Email Address",
+      "type": "concept",
+      "description": "The email address assigned to school staff",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "id": "mobile_number",
+      "label": "Mobile Number",
+      "type": "concept",
+      "description": "The phone number assigned to school staff",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    }
+  ],
+  "edges": [
+    {
+      "source": "evening_study",
+      "target": "year_head_dashboard",
+      "relationship": "accessible via",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "year_head_dashboard",
+      "target": "unique_schools_system",
+      "relationship": "part of",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "evening_study",
+      "target": "time_slots",
+      "relationship": "comprises",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "settings_icon",
+      "target": "evening_study",
+      "relationship": "accesses",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "sam_support",
+      "target": "evening_study",
+      "relationship": "supports",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "uniqueschoolapp_ie",
+      "target": "year_head_dashboard",
+      "relationship": "hosts",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "staffsupport_uniqueschools_ie",
+      "target": "evening_study",
+      "relationship": "provides support for",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "evening_slot",
+      "target": "time_slots",
+      "relationship": "is a type of",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "managing_time_slots",
+      "target": "evening_study",
+      "relationship": "is a part of",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "adding_time_slots",
+      "target": "managing_time_slots",
+      "relationship": "is a subprocess of",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "deleting_time_slots",
+      "target": "managing_time_slots",
+      "relationship": "is a subprocess of",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "zoom_training_session",
+      "target": "evening_study",
+      "relationship": "provides training for",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "evening_study",
+      "target": "zoom_training_session",
+      "relationship": "can be trained on",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "unique_schools_system",
+      "target": "uniqueschoolapp_ie",
+      "relationship": "is accessed via",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "year_head_dashboard",
+      "target": "settings_icon",
+      "relationship": "contains",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "evening_study",
+      "target": "evening_slot",
+      "relationship": "includes",
+      "source_doc": "1-access-setup-2026-02-23"
+    },
+    {
+      "source": "evening_study",
+      "target": "uniqueschoolapp",
+      "relationship": "managed by",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "detention_manager",
+      "target": "uniqueschoolapp",
+      "relationship": "part of",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "staff_member",
+      "target": "evening_study",
+      "relationship": "in charge of",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "student",
+      "target": "evening_study",
+      "relationship": "participates in",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "recurring_sessions",
+      "target": "evening_study",
+      "relationship": "part of",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "payment_item",
+      "target": "evening_study",
+      "relationship": "related to",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "group_creation",
+      "target": "payment_item",
+      "relationship": "based on",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "evening_study_setup",
+      "target": "detention_manager",
+      "relationship": "uses",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "student_addition",
+      "target": "evening_study_setup",
+      "relationship": "follows",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "zoom_training",
+      "target": "uniqueschoolapp",
+      "relationship": "provided by",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "email_notification",
+      "target": "staff_member",
+      "relationship": "notifies",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "payment_status",
+      "target": "payment_item",
+      "relationship": "describes",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "group_creation",
+      "target": "student_addition",
+      "relationship": "facilitates",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "evening_study",
+      "target": "group_creation",
+      "relationship": "uses",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "student",
+      "target": "payment_status",
+      "relationship": "has",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "uniqueschoolapp",
+      "target": "email_notification",
+      "relationship": "uses",
+      "source_doc": "2-create-sessions-add-students-2026-02-23"
+    },
+    {
+      "source": "calendar_management",
+      "target": "school_calendar",
+      "relationship": "manages",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "parents",
+      "target": "school_calendar",
+      "relationship": "uses",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "school_app",
+      "target": "school_calendar",
+      "relationship": "integrates",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "website",
+      "target": "school_calendar",
+      "relationship": "displays",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "dashboard",
+      "target": "add_edit_events",
+      "relationship": "provides access to",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "add_edit_events",
+      "target": "event_title",
+      "relationship": "requires",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "add_edit_events",
+      "target": "event_date",
+      "relationship": "requires",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "add_edit_events",
+      "target": "event_description",
+      "relationship": "requires",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "add_edit_events",
+      "target": "category",
+      "relationship": "requires",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "event",
+      "target": "event_title",
+      "relationship": "has",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "event",
+      "target": "event_date",
+      "relationship": "has",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "event",
+      "target": "event_description",
+      "relationship": "has",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "event",
+      "target": "category",
+      "relationship": "belongs to",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "support_team",
+      "target": "integration",
+      "relationship": "assists with",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "calendar_integration",
+      "target": "school_app",
+      "relationship": "involves",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "calendar_integration",
+      "target": "website",
+      "relationship": "involves",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "user",
+      "target": "dashboard",
+      "relationship": "uses",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "user",
+      "target": "add_edit_events",
+      "relationship": "performs",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "school_calendar",
+      "target": "event",
+      "relationship": "contains",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "integration",
+      "target": "calendar_management",
+      "relationship": "facilitates",
+      "source_doc": "calendar-manage-2025-08-07"
+    },
+    {
+      "source": "school_notifications",
+      "target": "notification_types",
+      "relationship": "has types",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "school_app",
+      "target": "registered_users",
+      "relationship": "has users",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "public_posts",
+      "target": "school_app",
+      "relationship": "part of",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "private_messages",
+      "target": "school_app",
+      "relationship": "not part of",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "notification_creation",
+      "target": "manage_notifications",
+      "relationship": "uses",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "manage_notifications",
+      "target": "push_notifications",
+      "relationship": "sends",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "categories",
+      "target": "notification_types",
+      "relationship": "organizes",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "images",
+      "target": "notification_creation",
+      "relationship": "enhances",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "videos",
+      "target": "notification_creation",
+      "relationship": "enhances",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "pdfs",
+      "target": "notification_creation",
+      "relationship": "attaches to",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "scheduling",
+      "target": "notification_creation",
+      "relationship": "controls",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "social_media_integration",
+      "target": "notification_creation",
+      "relationship": "extends",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "sms_notifications",
+      "target": "notification_creation",
+      "relationship": "alternatively sends",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "school_notifications",
+      "target": "school_app",
+      "relationship": "published on",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "registered_users",
+      "target": "public_posts",
+      "relationship": "sees",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "push_notifications",
+      "target": "registered_users",
+      "relationship": "notifies",
+      "source_doc": "how-to-send-a-notification-2026-02-18"
+    },
+    {
+      "source": "notification_categories",
+      "target": "notifications_feed",
+      "relationship": "part_of",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "meetings",
+      "target": "notification_categories",
+      "relationship": "instance_of",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "trips",
+      "target": "notification_categories",
+      "relationship": "instance_of",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "procedures",
+      "target": "notification_categories",
+      "relationship": "instance_of",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "dashboard",
+      "target": "left_side_menu",
+      "relationship": "contains",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "left_side_menu",
+      "target": "notification_categories_page",
+      "relationship": "links_to",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "notification_categories_page",
+      "target": "add_notification_category",
+      "relationship": "allows",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "add_notification_category",
+      "target": "notification_category_field",
+      "relationship": "uses",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "notification_category_field",
+      "target": "sort_order",
+      "relationship": "involves",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "sort_order",
+      "target": "notification_categories",
+      "relationship": "applies_to",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "submit",
+      "target": "notification_categories",
+      "relationship": "creates",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "schools",
+      "target": "year_based_categories",
+      "relationship": "uses",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "year_based_categories",
+      "target": "notification_categories",
+      "relationship": "instance_of",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "parents",
+      "target": "notifications",
+      "relationship": "receives",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "guardians",
+      "target": "notifications",
+      "relationship": "receives",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "students",
+      "target": "notifications",
+      "relationship": "associated_with",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "notifications",
+      "target": "notification_categories",
+      "relationship": "organized_by",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "notification_categories_page",
+      "target": "notifications",
+      "relationship": "manages",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "dashboard",
+      "target": "notifications_feed",
+      "relationship": "displays",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "add_notification_category",
+      "target": "submit",
+      "relationship": "preceded_by",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "notification_category_field",
+      "target": "submit",
+      "relationship": "preceded_by",
+      "source_doc": "notification-categories-2024-07-27 (1)"
+    },
+    {
+      "source": "dashboard",
+      "target": "notifications_feed",
+      "relationship": "contains",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "notification_category_field",
+      "target": "add_notification_category",
+      "relationship": "used_in",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "add_notification_category",
+      "target": "submit",
+      "relationship": "leads_to",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "sanket_haval",
+      "target": "notification_categories",
+      "relationship": "authored",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "schools",
+      "target": "notification_categories",
+      "relationship": "uses",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "parents",
+      "target": "notification_categories",
+      "relationship": "benefits_from",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "guardians",
+      "target": "notification_categories",
+      "relationship": "benefits_from",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "students",
+      "target": "parents",
+      "relationship": "related_to",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "year_based_categories",
+      "target": "notification_categories",
+      "relationship": "type_of",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "notifications",
+      "target": "notifications_feed",
+      "relationship": "displayed_in",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "notification_categories",
+      "target": "year_based_categories",
+      "relationship": "includes",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "dashboard",
+      "target": "add_notification_category",
+      "relationship": "provides_access_to",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "notification_categories",
+      "target": "sort_order",
+      "relationship": "uses",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "submit",
+      "target": "notifications",
+      "relationship": "enables",
+      "source_doc": "notification-categories-2024-07-27"
+    },
+    {
+      "source": "school_staff",
+      "target": "unique_schools_system",
+      "relationship": "uses",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "school_administrator",
+      "target": "unique_schools_system",
+      "relationship": "manages",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "main_school_app",
+      "target": "unique_schools_system",
+      "relationship": "part_of",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "administrators_app",
+      "target": "unique_schools_system",
+      "relationship": "part_of",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "desktop_dashboard",
+      "target": "unique_schools_system",
+      "relationship": "part_of",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "registration_process",
+      "target": "unique_schools_system",
+      "relationship": "required_for",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "login_with_microsoft",
+      "target": "unique_schools_system",
+      "relationship": "feature_of",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "school_administrator",
+      "target": "registration_process",
+      "relationship": "initiates",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "school_staff",
+      "target": "registration_process",
+      "relationship": "completes",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "senior_management",
+      "target": "access_permissions",
+      "relationship": "grants",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "staff_support",
+      "target": "school_staff",
+      "relationship": "assists",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "unique_schools_app_website",
+      "target": "main_school_app",
+      "relationship": "hosts",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "app_store",
+      "target": "main_school_app",
+      "relationship": "distributes",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "google_play_store",
+      "target": "main_school_app",
+      "relationship": "distributes",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "microsoft_account",
+      "target": "login_with_microsoft",
+      "relationship": "used_for",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "verification_code",
+      "target": "registration_process",
+      "relationship": "part_of",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "school_email_address",
+      "target": "registration_process",
+      "relationship": "required_for",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "mobile_number",
+      "target": "registration_process",
+      "relationship": "required_for",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "unique_schools_system",
+      "target": "access_permissions",
+      "relationship": "grants",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    },
+    {
+      "source": "school_staff",
+      "target": "access_permissions",
+      "relationship": "has",
+      "source_doc": "staff-first-time-setup-2026-02-18"
+    }
+  ]
+}

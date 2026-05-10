@@ -1,0 +1,164 @@
+{
+  "nodes": [
+    {
+      "id": "evening_study",
+      "label": "Evening Study",
+      "type": "concept",
+      "description": "A custom recurring evening study session"
+    },
+    {
+      "id": "uniqueschoolapp",
+      "label": "Unique School App",
+      "type": "technology",
+      "description": "A school management software"
+    },
+    {
+      "id": "detention_manager",
+      "label": "Detention Manager",
+      "type": "technology",
+      "description": "A module within the Unique School App"
+    },
+    {
+      "id": "staff_member",
+      "label": "Staff Member",
+      "type": "entity",
+      "description": "A person in charge of an Evening Study session"
+    },
+    {
+      "id": "student",
+      "label": "Student",
+      "type": "entity",
+      "description": "A participant in an Evening Study session"
+    },
+    {
+      "id": "recurring_sessions",
+      "label": "Recurring Sessions",
+      "type": "concept",
+      "description": "Repeated study sessions"
+    },
+    {
+      "id": "payment_item",
+      "label": "Payment Item",
+      "type": "concept",
+      "description": "A payment related to an Evening Study session"
+    },
+    {
+      "id": "group_creation",
+      "label": "Group Creation",
+      "type": "process",
+      "description": "Creating groups based on payment status"
+    },
+    {
+      "id": "evening_study_setup",
+      "label": "Evening Study Setup",
+      "type": "process",
+      "description": "Setting up a new Evening Study session"
+    },
+    {
+      "id": "student_addition",
+      "label": "Student Addition",
+      "type": "process",
+      "description": "Adding students to an Evening Study session"
+    },
+    {
+      "id": "zoom_training",
+      "label": "Zoom Training",
+      "type": "technology",
+      "description": "A video conferencing tool for training"
+    },
+    {
+      "id": "email_notification",
+      "label": "Email Notification",
+      "type": "technology",
+      "description": "An automated email notification system"
+    },
+    {
+      "id": "payment_status",
+      "label": "Payment Status",
+      "type": "concept",
+      "description": "The status of a payment related to an Evening Study session"
+    }
+  ],
+  "edges": [
+    {
+      "source": "evening_study",
+      "target": "uniqueschoolapp",
+      "relationship": "managed by"
+    },
+    {
+      "source": "detention_manager",
+      "target": "uniqueschoolapp",
+      "relationship": "part of"
+    },
+    {
+      "source": "staff_member",
+      "target": "evening_study",
+      "relationship": "in charge of"
+    },
+    {
+      "source": "student",
+      "target": "evening_study",
+      "relationship": "participates in"
+    },
+    {
+      "source": "recurring_sessions",
+      "target": "evening_study",
+      "relationship": "part of"
+    },
+    {
+      "source": "payment_item",
+      "target": "evening_study",
+      "relationship": "related to"
+    },
+    {
+      "source": "group_creation",
+      "target": "payment_item",
+      "relationship": "based on"
+    },
+    {
+      "source": "evening_study_setup",
+      "target": "detention_manager",
+      "relationship": "uses"
+    },
+    {
+      "source": "student_addition",
+      "target": "evening_study_setup",
+      "relationship": "follows"
+    },
+    {
+      "source": "zoom_training",
+      "target": "uniqueschoolapp",
+      "relationship": "provided by"
+    },
+    {
+      "source": "email_notification",
+      "target": "staff_member",
+      "relationship": "notifies"
+    },
+    {
+      "source": "payment_status",
+      "target": "payment_item",
+      "relationship": "describes"
+    },
+    {
+      "source": "group_creation",
+      "target": "student_addition",
+      "relationship": "facilitates"
+    },
+    {
+      "source": "evening_study",
+      "target": "group_creation",
+      "relationship": "uses"
+    },
+    {
+      "source": "student",
+      "target": "payment_status",
+      "relationship": "has"
+    },
+    {
+      "source": "uniqueschoolapp",
+      "target": "email_notification",
+      "relationship": "uses"
+    }
+  ]
+}

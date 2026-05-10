@@ -1,0 +1,214 @@
+{
+  "nodes": [
+    {
+      "id": "unique_schools_system",
+      "label": "Unique Schools System",
+      "type": "technology",
+      "description": "A system for managing school operations"
+    },
+    {
+      "id": "school_staff",
+      "label": "School Staff",
+      "type": "entity",
+      "description": "Employees of a school"
+    },
+    {
+      "id": "main_school_app",
+      "label": "Main School App",
+      "type": "technology",
+      "description": "A mobile application for school staff and students"
+    },
+    {
+      "id": "administrators_app",
+      "label": "Administrators App",
+      "type": "technology",
+      "description": "A mobile application for school administrators"
+    },
+    {
+      "id": "desktop_dashboard",
+      "label": "Desktop Dashboard",
+      "type": "technology",
+      "description": "A web-based platform for school staff"
+    },
+    {
+      "id": "registration_process",
+      "label": "Registration Process",
+      "type": "process",
+      "description": "The process of registering for the Unique Schools System"
+    },
+    {
+      "id": "login_with_microsoft",
+      "label": "Login with Microsoft",
+      "type": "technology",
+      "description": "A feature for logging in to the Unique Schools System using Microsoft credentials"
+    },
+    {
+      "id": "school_administrator",
+      "label": "School Administrator",
+      "type": "entity",
+      "description": "A person responsible for managing the Unique Schools System"
+    },
+    {
+      "id": "senior_management",
+      "label": "Senior Management",
+      "type": "entity",
+      "description": "A group of people responsible for making decisions about the Unique Schools System"
+    },
+    {
+      "id": "access_permissions",
+      "label": "Access Permissions",
+      "type": "concept",
+      "description": "The level of access granted to school staff"
+    },
+    {
+      "id": "staff_support",
+      "label": "Staff Support",
+      "type": "entity",
+      "description": "A team responsible for providing assistance to school staff"
+    },
+    {
+      "id": "unique_schools_app_website",
+      "label": "Unique Schools App Website",
+      "type": "technology",
+      "description": "The website for the Unique Schools System"
+    },
+    {
+      "id": "app_store",
+      "label": "App Store",
+      "type": "technology",
+      "description": "A platform for downloading mobile applications"
+    },
+    {
+      "id": "google_play_store",
+      "label": "Google Play Store",
+      "type": "technology",
+      "description": "A platform for downloading mobile applications"
+    },
+    {
+      "id": "microsoft_account",
+      "label": "Microsoft Account",
+      "type": "technology",
+      "description": "A type of account used for logging in to the Unique Schools System"
+    },
+    {
+      "id": "verification_code",
+      "label": "Verification Code",
+      "type": "concept",
+      "description": "A code sent to school staff to verify their registration"
+    },
+    {
+      "id": "school_email_address",
+      "label": "School Email Address",
+      "type": "concept",
+      "description": "The email address assigned to school staff"
+    },
+    {
+      "id": "mobile_number",
+      "label": "Mobile Number",
+      "type": "concept",
+      "description": "The phone number assigned to school staff"
+    }
+  ],
+  "edges": [
+    {
+      "source": "school_staff",
+      "target": "unique_schools_system",
+      "relationship": "uses"
+    },
+    {
+      "source": "school_administrator",
+      "target": "unique_schools_system",
+      "relationship": "manages"
+    },
+    {
+      "source": "main_school_app",
+      "target": "unique_schools_system",
+      "relationship": "part_of"
+    },
+    {
+      "source": "administrators_app",
+      "target": "unique_schools_system",
+      "relationship": "part_of"
+    },
+    {
+      "source": "desktop_dashboard",
+      "target": "unique_schools_system",
+      "relationship": "part_of"
+    },
+    {
+      "source": "registration_process",
+      "target": "unique_schools_system",
+      "relationship": "required_for"
+    },
+    {
+      "source": "login_with_microsoft",
+      "target": "unique_schools_system",
+      "relationship": "feature_of"
+    },
+    {
+      "source": "school_administrator",
+      "target": "registration_process",
+      "relationship": "initiates"
+    },
+    {
+      "source": "school_staff",
+      "target": "registration_process",
+      "relationship": "completes"
+    },
+    {
+      "source": "senior_management",
+      "target": "access_permissions",
+      "relationship": "grants"
+    },
+    {
+      "source": "staff_support",
+      "target": "school_staff",
+      "relationship": "assists"
+    },
+    {
+      "source": "unique_schools_app_website",
+      "target": "main_school_app",
+      "relationship": "hosts"
+    },
+    {
+      "source": "app_store",
+      "target": "main_school_app",
+      "relationship": "distributes"
+    },
+    {
+      "source": "google_play_store",
+      "target": "main_school_app",
+      "relationship": "distributes"
+    },
+    {
+      "source": "microsoft_account",
+      "target": "login_with_microsoft",
+      "relationship": "used_for"
+    },
+    {
+      "source": "verification_code",
+      "target": "registration_process",
+      "relationship": "part_of"
+    },
+    {
+      "source": "school_email_address",
+      "target": "registration_process",
+      "relationship": "required_for"
+    },
+    {
+      "source": "mobile_number",
+      "target": "registration_process",
+      "relationship": "required_for"
+    },
+    {
+      "source": "unique_schools_system",
+      "target": "access_permissions",
+      "relationship": "grants"
+    },
+    {
+      "source": "school_staff",
+      "target": "access_permissions",
+      "relationship": "has"
+    }
+  ]
+}
