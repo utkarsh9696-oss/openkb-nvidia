@@ -13,9 +13,12 @@ load_dotenv()
 app = Flask(__name__, template_folder='templates')
 CORS(app)
 
-# Directories
-UPLOAD_DIR = Path('uploads')
-WIKI_DIR = Path('wiki')
+# Use /tmp on Render (cloud), local folders otherwise
+IS_RENDER = os.environ.get('RENDER', False)
+BASE_DIR = Path('/tmp/openkb') if IS_RENDER else Path('.')
+
+UPLOAD_DIR = BASE_DIR / 'uploads'
+WIKI_DIR = BASE_DIR / 'wiki'
 SUMMARIES_DIR = WIKI_DIR / 'summaries'
 CONCEPTS_DIR = WIKI_DIR / 'concepts'
 GRAPH_DIR = WIKI_DIR / 'graph'
@@ -30,6 +33,7 @@ def call_nvidia(messages, max_tokens=2048):
     api_key = os.getenv('NVIDIA_API_KEY', '')
     if not api_key or api_key == 'nvapi-your-key-here':
         raise ValueError("NVIDIA API key not configured")
+    
     url = 'https://integrate.api.nvidia.com/v1/chat/completions'
     headers = {
         'Authorization': f'Bearer {api_key}',
@@ -57,6 +61,7 @@ def save_master_graph(graph):
         json.dump(graph, f, indent=2)
 
 def clean_graph(graph):
+    """Remove edges that reference non-existent node IDs."""
     valid_ids = {n['id'] for n in graph.get('nodes', [])}
     clean_edges = []
     for e in graph.get('edges', []):
@@ -77,22 +82,28 @@ def merge_graphs(master, new_graph, doc_name):
             node['source_doc'] = doc_name
             master['nodes'].append(node)
             existing_ids.add(node_id)
+    
     existing_edges = {(e['source'], e['target'], e.get('relationship','')) for e in master['edges']}
     for edge in new_graph.get('edges', []):
         src = edge.get('source', '')
         tgt = edge.get('target', '')
         key = (src, tgt, edge.get('relationship',''))
+        # Only add edge if BOTH nodes exist in master
         if key not in existing_edges and src in existing_ids and tgt in existing_ids:
             edge['source_doc'] = doc_name
             master['edges'].append(edge)
             existing_edges.add(key)
+    
     return master
 
 def extract_json_from_text(text):
+    """Try to extract JSON from LLM response that may have extra text."""
+    # Try direct parse first
     try:
         return json.loads(text)
     except:
         pass
+    # Try to find JSON block
     match = re.search(r'\{[\s\S]*\}', text)
     if match:
         try:
@@ -106,6 +117,7 @@ def get_doc_list():
     indexed_names = set()
     for f in SUMMARIES_DIR.glob('*.md'):
         indexed_names.add(f.stem)
+    
     for f in sorted(UPLOAD_DIR.iterdir()):
         if f.is_file() and f.suffix.lower() in ['.txt', '.pdf', '.md']:
             stem = f.stem
@@ -118,7 +130,7 @@ def get_doc_list():
             })
     return docs
 
-# Routes
+# ─── Routes ───────────────────────────────────────────────────────────────────
 
 @app.route('/')
 def index():
@@ -167,9 +179,13 @@ def delete_document():
     filename = data.get('filename')
     if not filename:
         return jsonify({'error': 'filename required'}), 400
+    
+    # Delete uploaded file
     doc_path = UPLOAD_DIR / filename
     if doc_path.exists():
         doc_path.unlink()
+    
+    # Delete associated wiki files
     stem = Path(filename).stem
     for f in [
         SUMMARIES_DIR / f'{stem}.md',
@@ -177,6 +193,8 @@ def delete_document():
     ]:
         if f.exists():
             f.unlink()
+    
+    # Rebuild master graph from remaining doc graphs
     master = {'nodes': [], 'edges': []}
     for gf in GRAPH_DIR.glob('*.json'):
         if gf.name == 'master_graph.json':
@@ -188,6 +206,7 @@ def delete_document():
         except:
             pass
     save_master_graph(master)
+    
     return jsonify({'success': True, 'filename': filename})
 
 @app.route('/api/documents/index', methods=['POST'])
@@ -196,14 +215,17 @@ def index_document():
     filename = data.get('filename')
     if not filename:
         return jsonify({'error': 'filename required'}), 400
+    
     doc_path = UPLOAD_DIR / filename
     if not doc_path.exists():
         return jsonify({'error': 'File not found'}), 404
+    
+    # Read document
     try:
         ext = doc_path.suffix.lower()
         if ext == '.pdf':
             try:
-                import fitz
+                import fitz  # pymupdf
                 doc = fitz.open(str(doc_path))
                 content = ''
                 for page in doc:
@@ -217,13 +239,15 @@ def index_document():
             content = doc_path.read_text(encoding='utf-8', errors='ignore')
     except Exception as e:
         return jsonify({'error': f'Could not read file: {e}'}), 500
-
+    
+    # Truncate if very large
     if len(content) > 12000:
         content = content[:12000] + '\n\n[Document truncated for processing]'
-
+    
     doc_stem = doc_path.stem
-
+    
     try:
+        # Step 1: Generate wiki summary
         summary_prompt = f"""You are a knowledge base assistant. Read the following document and create a detailed wiki-style summary page.
 
 Document Title: {filename}
@@ -241,9 +265,12 @@ Write a comprehensive wiki page with:
 Format it as clean markdown with headers (##) and bullet points."""
 
         summary_md = call_nvidia([{'role': 'user', 'content': summary_prompt}], max_tokens=1500)
+        
+        # Save summary
         summary_file = SUMMARIES_DIR / f'{doc_stem}.md'
         summary_file.write_text(f'# {filename}\n\n{summary_md}', encoding='utf-8')
-
+        
+        # Step 2: Extract knowledge graph
         graph_prompt = f"""You are a knowledge graph extraction system. Analyze this document and extract a structured knowledge graph.
 
 Document:
@@ -268,20 +295,25 @@ Rules:
 - Return ONLY the JSON object, nothing else"""
 
         graph_raw = call_nvidia([{'role': 'user', 'content': graph_prompt}], max_tokens=2000)
+        
+        # Parse graph JSON
         new_graph = extract_json_from_text(graph_raw)
         if not new_graph or 'nodes' not in new_graph:
+            # Fallback: create minimal graph
             new_graph = {
                 'nodes': [{'id': doc_stem, 'label': filename, 'type': 'concept', 'description': 'Document node'}],
                 'edges': []
             }
-
+        
+        # Save doc-specific graph
         doc_graph_file = GRAPH_DIR / f'{doc_stem}.json'
         doc_graph_file.write_text(json.dumps(new_graph, indent=2), encoding='utf-8')
-
+        
+        # Merge into master graph
         master = load_master_graph()
         master = merge_graphs(master, new_graph, doc_stem)
         save_master_graph(master)
-
+        
         return jsonify({
             'success': True,
             'filename': filename,
@@ -289,19 +321,23 @@ Rules:
             'edges_added': len(new_graph.get('edges', [])),
             'summary_saved': str(summary_file)
         })
-
+    
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/wiki/compile', methods=['POST'])
 def compile_wiki():
+    """Generate cross-document concept pages."""
     summaries = list(SUMMARIES_DIR.glob('*.md'))
     if not summaries:
         return jsonify({'error': 'No indexed documents found'}), 400
+    
+    # Gather all summaries
     all_summaries = ''
     for sf in summaries:
         all_summaries += f'\n\n### From: {sf.stem}\n'
         all_summaries += sf.read_text(encoding='utf-8')[:2000]
+    
     try:
         prompt = f"""You are a knowledge base compiler. Based on these document summaries, identify 3-5 cross-cutting concepts or themes that appear across multiple documents and write a brief wiki page for each.
 
@@ -316,13 +352,16 @@ For each cross-cutting concept, return JSON array:
 Return ONLY the JSON array, no other text."""
 
         result = call_nvidia([{'role': 'user', 'content': prompt}], max_tokens=2000)
+        
         concepts = None
+        # Try to find JSON array
         match = re.search(r'\[[\s\S]*\]', result)
         if match:
             try:
                 concepts = json.loads(match.group())
             except:
                 pass
+        
         pages_created = []
         if concepts:
             for c in concepts:
@@ -332,7 +371,9 @@ Return ONLY the JSON array, no other text."""
                 page_file = CONCEPTS_DIR / f'{safe_title}.md'
                 page_file.write_text(f'# {title}\n\n{content}', encoding='utf-8')
                 pages_created.append(title)
+        
         return jsonify({'success': True, 'pages_created': pages_created})
+    
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -353,13 +394,18 @@ def get_wiki_page():
     ptype = request.args.get('type', 'summary')
     if not title:
         return jsonify({'error': 'title required'}), 400
+    
     dirs = {'summary': SUMMARIES_DIR, 'concept': CONCEPTS_DIR, 'exploration': EXPLORATIONS_DIR}
     base_dir = dirs.get(ptype, SUMMARIES_DIR)
+    
+    # Try exact match first
     page_file = base_dir / f'{title}.md'
     if not page_file.exists():
+        # Try with underscores
         page_file = base_dir / f'{title.replace(" ", "_")}.md'
     if not page_file.exists():
         return jsonify({'error': 'Page not found'}), 404
+    
     content = page_file.read_text(encoding='utf-8')
     return jsonify({'title': title, 'content': content, 'type': ptype})
 
@@ -375,18 +421,24 @@ def search():
     query = data.get('query', '').strip()
     if not query:
         return jsonify({'error': 'query required'}), 400
+    
+    # Gather context: summaries + graph
     context_parts = []
     for sf in sorted(SUMMARIES_DIR.glob('*.md'))[:5]:
         context_parts.append(f'=== {sf.stem} ===\n' + sf.read_text(encoding='utf-8')[:1500])
+    
     graph = load_master_graph()
     if graph['nodes']:
         graph_summary = 'Knowledge Graph Nodes: ' + ', '.join(
             f"{n['label']} ({n['type']})" for n in graph['nodes'][:30]
         )
         context_parts.append(graph_summary)
+    
     context = '\n\n'.join(context_parts)
+    
     if not context:
         return jsonify({'error': 'No documents indexed yet. Please index some documents first.'}), 400
+    
     try:
         prompt = f"""You are a knowledge base assistant. Answer the user's question based on the indexed documents below.
 
@@ -404,6 +456,8 @@ Provide a comprehensive, well-structured answer. Include:
 If the question cannot be answered from the knowledge base, say so clearly."""
 
         answer = call_nvidia([{'role': 'user', 'content': prompt}], max_tokens=1500)
+        
+        # Save as exploration
         ts = int(time.time())
         safe_q = re.sub(r'[^\w\s]', '', query)[:40].strip().replace(' ', '_')
         exp_file = EXPLORATIONS_DIR / f'{safe_q}_{ts}.md'
@@ -411,20 +465,25 @@ If the question cannot be answered from the knowledge base, say so clearly."""
             f'# Query: {query}\n\n**Date:** {time.strftime("%Y-%m-%d %H:%M:%S")}\n\n## Answer\n\n{answer}',
             encoding='utf-8'
         )
+        
+        # Find relevant nodes
         query_lower = query.lower()
         relevant_nodes = [
             n for n in graph['nodes']
-            if query_lower in n.get('label', '').lower() or
+            if query_lower in n.get('label', '').lower() or 
                query_lower in n.get('description', '').lower() or
                any(word in n.get('label', '').lower() for word in query_lower.split() if len(word) > 3)
         ][:5]
+        
         sources = [sf.stem for sf in SUMMARIES_DIR.glob('*.md')]
+        
         return jsonify({
             'answer': answer,
             'sources': sources,
             'relevant_nodes': relevant_nodes,
             'exploration_saved': exp_file.name
         })
+    
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -434,11 +493,11 @@ if __name__ == '__main__':
     print("=" * 50)
     api_key = os.getenv('NVIDIA_API_KEY', '')
     if not api_key or api_key == 'nvapi-your-key-here':
-        print("  WARNING: Add your NVIDIA API key to .env")
+        print("  ⚠️  WARNING: Add your NVIDIA API key to .env")
         print("  Get a free key at https://build.nvidia.com")
     else:
-        print("  NVIDIA API key loaded")
-    print("  Open http://localhost:5000")
+        print("  ✓  NVIDIA API key loaded")
+    print("  → Open http://localhost:5000")
     print("=" * 50)
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
