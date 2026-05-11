@@ -437,17 +437,17 @@ def search():
     if not context:
         return jsonify({'error': 'No documents indexed yet. Please index some documents first.'}), 400
     
-    # ── FIXED PROMPT — direct, concise answers ────────────────
-    prompt = f"""You are a precise knowledge base assistant. Answer the user's question using ONLY the documents provided below.
+    # ── FIXED PROMPT — concise answers WITH source references ──
+    prompt = f"""You are a helpful knowledge base assistant. Answer the user's question using the documents below.
 
-STRICT RULES:
-- If the question asks "how to" or asks for steps → give a clean numbered step-by-step list ONLY
-- Be direct and concise — no padding, no essay-style headers like "Supporting Details" or "Related Concepts"
-- Do not add sections the user did not ask for
-- Do not repeat the question back
-- Do not mention document names unless the user asks which document
-- If something is not covered in the documents, say: "This information is not in the knowledge base."
-- Keep answers under 200 words unless steps genuinely require more
+RULES:
+- If the question asks "how to" or asks for steps → give a clean numbered step-by-step list
+- After the steps or answer, add a short "Key Points" section (2-3 bullet points of important extra detail)
+- End with "Source: [document name]" listing which document(s) had the answer
+- If the info is partially in the documents, give what IS there — never say "not in knowledge base" if there is any related info
+- Only say "not found" if there is truly zero related content anywhere
+- No bloated headers like "Supporting Details" or "Related Concepts" or "Relevant Documents"
+- Be concise — the answer + key points should be under 250 words total
 
 KNOWLEDGE BASE:
 {context[:5000]}
@@ -457,8 +457,7 @@ QUESTION: {query}
 ANSWER:"""
 
     try:
-        # max_tokens reduced to 600 to prevent essay-length responses
-        answer = call_nvidia([{'role': 'user', 'content': prompt}], max_tokens=600)
+        answer = call_nvidia([{'role': 'user', 'content': prompt}], max_tokens=700)
         
         ts = int(time.time())
         safe_q = re.sub(r'[^\w\s]', '', query)[:40].strip().replace(' ', '_')
