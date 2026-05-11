@@ -88,7 +88,6 @@ def merge_graphs(master, new_graph, doc_name):
         src = edge.get('source', '')
         tgt = edge.get('target', '')
         key = (src, tgt, edge.get('relationship',''))
-        # Only add edge if BOTH nodes exist in master
         if key not in existing_edges and src in existing_ids and tgt in existing_ids:
             edge['source_doc'] = doc_name
             master['edges'].append(edge)
@@ -98,12 +97,10 @@ def merge_graphs(master, new_graph, doc_name):
 
 def extract_json_from_text(text):
     """Try to extract JSON from LLM response that may have extra text."""
-    # Try direct parse first
     try:
         return json.loads(text)
     except:
         pass
-    # Try to find JSON block
     match = re.search(r'\{[\s\S]*\}', text)
     if match:
         try:
@@ -180,21 +177,15 @@ def delete_document():
     if not filename:
         return jsonify({'error': 'filename required'}), 400
     
-    # Delete uploaded file
     doc_path = UPLOAD_DIR / filename
     if doc_path.exists():
         doc_path.unlink()
     
-    # Delete associated wiki files
     stem = Path(filename).stem
-    for f in [
-        SUMMARIES_DIR / f'{stem}.md',
-        GRAPH_DIR / f'{stem}.json',
-    ]:
+    for f in [SUMMARIES_DIR / f'{stem}.md', GRAPH_DIR / f'{stem}.json']:
         if f.exists():
             f.unlink()
     
-    # Rebuild master graph from remaining doc graphs
     master = {'nodes': [], 'edges': []}
     for gf in GRAPH_DIR.glob('*.json'):
         if gf.name == 'master_graph.json':
@@ -220,7 +211,6 @@ def index_document():
     if not doc_path.exists():
         return jsonify({'error': 'File not found'}), 404
     
-    # Read document
     try:
         ext = doc_path.suffix.lower()
         if ext == '.pdf':
@@ -240,14 +230,12 @@ def index_document():
     except Exception as e:
         return jsonify({'error': f'Could not read file: {e}'}), 500
     
-    # Truncate if very large
     if len(content) > 12000:
         content = content[:12000] + '\n\n[Document truncated for processing]'
     
     doc_stem = doc_path.stem
     
     try:
-        # Step 1: Generate wiki summary
         summary_prompt = f"""You are a knowledge base assistant. Read the following document and create a detailed wiki-style summary page.
 
 Document Title: {filename}
@@ -266,11 +254,9 @@ Format it as clean markdown with headers (##) and bullet points."""
 
         summary_md = call_nvidia([{'role': 'user', 'content': summary_prompt}], max_tokens=1500)
         
-        # Save summary
         summary_file = SUMMARIES_DIR / f'{doc_stem}.md'
         summary_file.write_text(f'# {filename}\n\n{summary_md}', encoding='utf-8')
         
-        # Step 2: Extract knowledge graph
         graph_prompt = f"""You are a knowledge graph extraction system. Analyze this document and extract a structured knowledge graph.
 
 Document:
@@ -296,20 +282,16 @@ Rules:
 
         graph_raw = call_nvidia([{'role': 'user', 'content': graph_prompt}], max_tokens=2000)
         
-        # Parse graph JSON
         new_graph = extract_json_from_text(graph_raw)
         if not new_graph or 'nodes' not in new_graph:
-            # Fallback: create minimal graph
             new_graph = {
                 'nodes': [{'id': doc_stem, 'label': filename, 'type': 'concept', 'description': 'Document node'}],
                 'edges': []
             }
         
-        # Save doc-specific graph
         doc_graph_file = GRAPH_DIR / f'{doc_stem}.json'
         doc_graph_file.write_text(json.dumps(new_graph, indent=2), encoding='utf-8')
         
-        # Merge into master graph
         master = load_master_graph()
         master = merge_graphs(master, new_graph, doc_stem)
         save_master_graph(master)
@@ -327,12 +309,10 @@ Rules:
 
 @app.route('/api/wiki/compile', methods=['POST'])
 def compile_wiki():
-    """Generate cross-document concept pages."""
     summaries = list(SUMMARIES_DIR.glob('*.md'))
     if not summaries:
         return jsonify({'error': 'No indexed documents found'}), 400
     
-    # Gather all summaries
     all_summaries = ''
     for sf in summaries:
         all_summaries += f'\n\n### From: {sf.stem}\n'
@@ -354,7 +334,6 @@ Return ONLY the JSON array, no other text."""
         result = call_nvidia([{'role': 'user', 'content': prompt}], max_tokens=2000)
         
         concepts = None
-        # Try to find JSON array
         match = re.search(r'\[[\s\S]*\]', result)
         if match:
             try:
@@ -398,10 +377,8 @@ def get_wiki_page():
     dirs = {'summary': SUMMARIES_DIR, 'concept': CONCEPTS_DIR, 'exploration': EXPLORATIONS_DIR}
     base_dir = dirs.get(ptype, SUMMARIES_DIR)
     
-    # Try exact match first
     page_file = base_dir / f'{title}.md'
     if not page_file.exists():
-        # Try with underscores
         page_file = base_dir / f'{title.replace(" ", "_")}.md'
     if not page_file.exists():
         return jsonify({'error': 'Page not found'}), 404
@@ -422,11 +399,32 @@ def search():
     if not query:
         return jsonify({'error': 'query required'}), 400
     
-    # Gather context: summaries + graph
+    # Gather context from actual document content (not just summaries)
     context_parts = []
     for sf in sorted(SUMMARIES_DIR.glob('*.md'))[:5]:
-        context_parts.append(f'=== {sf.stem} ===\n' + sf.read_text(encoding='utf-8')[:1500])
-    
+        context_parts.append(f'=== {sf.stem} ===\n' + sf.read_text(encoding='utf-8')[:2000])
+
+    # Also include raw document content for better accuracy
+    docs = get_doc_list()
+    for doc in docs[:5]:
+        doc_path = UPLOAD_DIR / doc['name']
+        if doc_path.exists():
+            try:
+                ext = doc_path.suffix.lower()
+                if ext == '.pdf':
+                    try:
+                        import fitz
+                        d = fitz.open(str(doc_path))
+                        raw = ''.join(page.get_text() for page in d)
+                        d.close()
+                    except:
+                        raw = doc_path.read_text(encoding='utf-8', errors='ignore')
+                else:
+                    raw = doc_path.read_text(encoding='utf-8', errors='ignore')
+                context_parts.append(f'=== RAW: {doc["stem"]} ===\n{raw[:2000]}')
+            except:
+                pass
+
     graph = load_master_graph()
     if graph['nodes']:
         graph_summary = 'Knowledge Graph Nodes: ' + ', '.join(
@@ -439,25 +437,29 @@ def search():
     if not context:
         return jsonify({'error': 'No documents indexed yet. Please index some documents first.'}), 400
     
-    try:
-        prompt = f"""You are a knowledge base assistant. Answer the user's question based on the indexed documents below.
+    # ── FIXED PROMPT — direct, concise answers ────────────────
+    prompt = f"""You are a precise knowledge base assistant. Answer the user's question using ONLY the documents provided below.
+
+STRICT RULES:
+- If the question asks "how to" or asks for steps → give a clean numbered step-by-step list ONLY
+- Be direct and concise — no padding, no essay-style headers like "Supporting Details" or "Related Concepts"
+- Do not add sections the user did not ask for
+- Do not repeat the question back
+- Do not mention document names unless the user asks which document
+- If something is not covered in the documents, say: "This information is not in the knowledge base."
+- Keep answers under 200 words unless steps genuinely require more
 
 KNOWLEDGE BASE:
-{context}
+{context[:5000]}
 
-USER QUESTION: {query}
+QUESTION: {query}
 
-Provide a comprehensive, well-structured answer. Include:
-1. A direct answer to the question
-2. Supporting details from the documents
-3. Related concepts from the knowledge graph
-4. Mention which documents contain relevant information
+ANSWER:"""
 
-If the question cannot be answered from the knowledge base, say so clearly."""
-
-        answer = call_nvidia([{'role': 'user', 'content': prompt}], max_tokens=1500)
+    try:
+        # max_tokens reduced to 600 to prevent essay-length responses
+        answer = call_nvidia([{'role': 'user', 'content': prompt}], max_tokens=600)
         
-        # Save as exploration
         ts = int(time.time())
         safe_q = re.sub(r'[^\w\s]', '', query)[:40].strip().replace(' ', '_')
         exp_file = EXPLORATIONS_DIR / f'{safe_q}_{ts}.md'
@@ -466,12 +468,10 @@ If the question cannot be answered from the knowledge base, say so clearly."""
             encoding='utf-8'
         )
         
-        # Find relevant nodes
         query_lower = query.lower()
         relevant_nodes = [
             n for n in graph['nodes']
-            if query_lower in n.get('label', '').lower() or 
-               query_lower in n.get('description', '').lower() or
+            if query_lower in n.get('label', '').lower() or
                any(word in n.get('label', '').lower() for word in query_lower.split() if len(word) > 3)
         ][:5]
         
